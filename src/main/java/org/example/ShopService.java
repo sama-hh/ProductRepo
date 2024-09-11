@@ -11,11 +11,11 @@ public class ShopService {
         this.productRepo = productRepo;
     }
 
-    public void placeOrder(String orderId, List<OrderProduct> op) {
+    public void placeOrder(String orderId, List<OrderProduct> orderProducts) {
         ProductRepo orderedProducts = new ProductRepo();
         double totalPrice = 0;
 
-        for(OrderProduct orderProduct : op) {
+        for(OrderProduct orderProduct : orderProducts) {
             Product orderedProduct = productRepo.getProduct(orderProduct.getProductId());
             if(orderedProduct == null) {
                 System.out.println("No such product");
