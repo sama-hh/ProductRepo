@@ -11,18 +11,22 @@ public class ShopService {
         this.productRepo = productRepo;
     }
 
-    public void placeOrder(String orderId, List<String> productIds) {
+    public void placeOrder(String orderId, List<OrderProduct> op) {
         ProductRepo orderedProducts = new ProductRepo();
+        double totalPrice = 0;
 
-        for(String productId : productIds) {
-            if(productRepo.getProduct(productId) == null) {
+        for(OrderProduct orderProduct : op) {
+            Product orderedProduct = productRepo.getProduct(orderProduct.getProductId());
+            if(orderedProduct == null) {
                 System.out.println("No such product");
             } else {
-                orderedProducts.addProduct(productRepo.getProduct(productId));
+                orderedProducts.addProduct(orderedProduct);
+                totalPrice += orderedProduct.price();
             }
         }
 
-        Order newOrder = new Order(orderId, orderedProducts);
+
+        Order newOrder = new Order(orderId, orderedProducts, totalPrice);
         orderListRepo.addOrder(newOrder);
 
         orderListRepo.printOrders();

@@ -16,7 +16,12 @@ public class Main {
 
         OrderListRepo orderListRepo = new OrderListRepo();
 
+        OrderProduct orderedProduct1 = new OrderProduct("1", 1);
+        OrderProduct orderedProduct2 = new OrderProduct("2", 2);
+        orderedProduct2.setQuantity(3);
+        System.out.println("orderedProduct2 quantity = " + orderedProduct2.getQuantity());
+
         ShopService shopService = new ShopService(orderListRepo, productRepo);
-        shopService.placeOrder("1" , Arrays.asList("1", "2"));
+        shopService.placeOrder("1" , Arrays.asList(orderedProduct1, orderedProduct2));
     }
 }

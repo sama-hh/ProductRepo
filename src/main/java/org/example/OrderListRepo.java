@@ -33,7 +33,7 @@ public class OrderListRepo {
 
     public void printOrders() {
         for (Order order : orders) {
-            System.out.println("Order id=" + order.id() + ", " + order.orderedProducts().getAllProducts());
+            System.out.println("Order id=" + order.id() + ", products" + order.orderedProducts().getAllProducts() + ", total price " + order.totalPrice());
         }
     }
 
