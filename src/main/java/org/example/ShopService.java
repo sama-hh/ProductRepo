@@ -26,12 +26,10 @@ public class ShopService {
             }
         }
 
+
         Order newOrder = new Order(orderId, orderedProducts, totalPrice);
         orderListRepo.addOrder(newOrder);
 
         orderListRepo.printOrders();
-        System.out.println("------");
-        productRepo.printProducts();
-
     }
 }

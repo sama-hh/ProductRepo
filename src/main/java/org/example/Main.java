@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         ProductRepo productRepo = new ProductRepo();
         CSVLoader.loadProductsFromCSV("src/main/java/org/example/data", productRepo);
-        System.out.println(productRepo.getAllProducts());
+        productRepo.printProducts();
 
         //
         OrderListRepo orderListRepo = new OrderListRepo();
