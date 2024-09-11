@@ -17,14 +17,14 @@ public class ShopService {
 
         for(OrderProduct orderProduct : orderProducts) {
             Product orderedProduct = productRepo.getProduct(orderProduct.getProductId());
+            int orderedProductQuantity = orderProduct.getQuantity();
             if(orderedProduct == null) {
                 System.out.println("No such product");
             } else {
                 orderedProducts.addProduct(orderedProduct);
-                totalPrice += orderedProduct.price();
+                totalPrice += orderedProduct.price() * orderedProductQuantity;;
             }
         }
-
 
         Order newOrder = new Order(orderId, orderedProducts, totalPrice);
         orderListRepo.addOrder(newOrder);
